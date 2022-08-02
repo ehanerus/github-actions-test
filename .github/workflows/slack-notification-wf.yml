@@ -18,15 +18,12 @@ jobs:
         env:
           DATA: |
             {
-              "channel": "C03RD3YEJF9",
+              "channel": ${{ secrets.SLACK_CHANNEL_TOKEN }}",
               "blocks": [{
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ":rocket: *NEW PULL REQUEST*
-                  \n published by *${{ github.event.pull_request.user.login }}*
-                  \n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>
-                  \n status: *${{ github.event.pull_request.state }}*"
+                  "text": ":rocket: *NEW PULL REQUEST*\n published by *${{ github.event.pull_request.user.login }}*\n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>\n status: *${{ github.event.pull_request.state }}*"
                 }
               },
                {
