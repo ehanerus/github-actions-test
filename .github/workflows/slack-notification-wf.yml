@@ -18,7 +18,7 @@ jobs:
         env:
           DATA: |
             {
-              "channel": ${{ secrets.SLACK_CHANNEL_TOKEN }}",
+              "channel": "${{ secrets.SLACK_CHANNEL_TOKEN }}",
               "blocks": [{
                 "type": "section",
                 "text": {
