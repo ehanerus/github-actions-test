@@ -1,0 +1,10 @@
+name: 'Slack Notification'
+description: 'Notifies relevant slack channel when new PR is opened with link'
+runs:
+  using: 'composite'
+  steps:
+    - id: TODO
+      run: TODO
+      shell: TODO
+
+      
