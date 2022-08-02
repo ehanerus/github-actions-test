@@ -23,7 +23,10 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ":rocket: *NEW PULL REQUEST*\n published by *${{ github.event.pull_request.user.login }}*\n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>\n status: *${{ github.event.pull_request.state }}*"
+                  "text": ":rocket: *NEW PULL REQUEST*
+                  \n published by *${{ github.event.pull_request.user.login }}*
+                  \n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>
+                  \n status: *${{ github.event.pull_request.state }}*"
                 }
               },
                {
@@ -35,3 +38,4 @@ jobs:
               }]
             }
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_USER_TOKEN: ${{ github.event.pull_request.user.login }}
