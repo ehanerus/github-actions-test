@@ -23,7 +23,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*Pull Request:*/n ${{ github.event.pull_request.title }}"
+                  "text": "*Pull Request:*\n ${{ github.event.pull_request.title }}"
                 }
               }, {
                 "type": "section",
