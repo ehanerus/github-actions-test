@@ -23,7 +23,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "*Pull Request:*\n ${{ github.event.pull_request.title }}"
+                  "text": ":rotating_light: *New pull request published:* :rotating_light:\n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>"
                 }
               }, {
                 "type": "section",
