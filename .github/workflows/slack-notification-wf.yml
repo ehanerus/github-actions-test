@@ -2,6 +2,7 @@ name: Slack Notifications
 
 on:
   pull_request:
+    types: [ opened ]
     branches: [ main ]
 
 jobs:
@@ -18,20 +19,15 @@ jobs:
         env:
           DATA: |
             {
-              "channel": "C03RD3YEJF9",
+              "channel": "${{ secrets.SLACK_CHANNEL_TOKEN }}",
               "blocks": [{
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ":rotating_light: *New pull request published:* :rotating_light:\n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>"
+                  "text": ":rocket: *NEW PULL REQUEST*\n published by *${{ github.event.pull_request.user.login }}*\n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>\n status: *${{ github.event.pull_request.state }}*"
                 }
-              }, {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*Author:*\n${{ github.event.pull_request.user.login }}\n\n*State:*\n${{ github.event.pull_request.state }}"
-                }
-              }, {
+              },
+               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
@@ -40,3 +36,4 @@ jobs:
               }]
             }
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_USER_TOKEN: ${{ github.event.pull_request.user.login }}
