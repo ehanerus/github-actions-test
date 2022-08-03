@@ -1,2 +1,2 @@
 # github-actions-test
-bot test nummer 3
+bot test
