@@ -2,7 +2,7 @@ name: Slack Notifications
 
 on:
   pull_request:
-    types: [ opened ]
+    #types: [ opened ]
     branches: [ main ]
 
 jobs:
@@ -17,23 +17,10 @@ jobs:
         shell: bash
         run: bash .github/entrypoint.sh
         env:
-          DATA: |
-            {
-              "channel": "${{ secrets.SLACK_CHANNEL_TOKEN }}",
-              "blocks": [{
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": ":rocket: *NEW PULL REQUEST*\n published by *${{ github.event.pull_request.user.login }}*\n\n <${{ github.event.pull_request._links.html.href }}|*${{ github.event.pull_request.title }}*>\n status: *${{ github.event.pull_request.state }}*"
-                }
-              },
-               {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "<${{ github.event.pull_request._links.html.href }}|View Pull Request>"
-                }
-              }]
-            }
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_USER_TOKEN: ${{ github.event.pull_request.user.login }}
+          SLACK_CHANNEL_TOKEN: ${{ secrets.SLACK_CHANNEL_TOKEN }}
+          #SLACK_USER_TOKEN: ${{ github.event.pull_request.user.login }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_LINK: ${{ github.event.pull_request._links.html.href }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PT_STATE: ${{ github.event.pull_request.state }}
