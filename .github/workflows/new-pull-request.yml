@@ -1,12 +1,12 @@
-name: Slack Notifications
+name: New PR Slack Notification
 
 on:
   pull_request:
-    #types: [ opened ]
+    #types: [ opened, ready_for_review ]
     branches: [ main ]
 
 jobs:
-  notifySlack:
+  notifyNewPR:
 
     runs-on: ubuntu-latest
 
