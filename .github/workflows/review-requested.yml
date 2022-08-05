@@ -1,0 +1,24 @@
+name: Review Requested Slack Notification
+
+on:
+  pull_request:
+    types: [ review_requested ]
+    branches: [ main ]
+
+jobs:
+  notifyReviewRequested:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Review requested
+        shell: Bash
+        run: bash .github/review-entrypoint.sh
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_TOKEN: "D03SHCE2PNC"
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_LINK: ${{ github.event.pull_request._links.html.href }}
+          PR_TITLE: ${{ github.event.pull_request.title }} 

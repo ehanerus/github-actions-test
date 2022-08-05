@@ -6,22 +6,15 @@ if test -z "$SLACK_BOT_TOKEN"; then
   exit 1
 fi
 
-DATA=$(cat <<-END
+REVIEW_DATA=$(cat <<-END
     {
       "channel": "$SLACK_CHANNEL_TOKEN",
       "blocks": [{
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": ":rocket: *NEW PULL REQUEST*\n published by *$PR_AUTHOR*\n\n <$PR_LINK|*$PR_TITLE*>\n status: *$PR_STATE*"
-        }
-      },
-        {
-        "type": "section",
-        "text": {
-          "type": "mrkdwn",
-          "text": "<$PR_LINK|View Pull Request>"
-        }
+          "text": "Your review has been requested by $PR_AUTHOR for <$PR_LINK|*$PR_TITLE*>"
+        }  
       }] 
     }
 END
@@ -30,5 +23,5 @@ END
 curl -X POST \
      -H "Content-type: application/json; charset=utf-8" \
      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-     -d "$DATA" \
+     -d "$REVIEW_DATA" \
      https://slack.com/api/chat.postMessage
