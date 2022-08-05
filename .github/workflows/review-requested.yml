@@ -18,7 +18,7 @@ jobs:
         run: bash .github/review-entrypoint.sh
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_CHANNEL_TOKEN: D03SHCE2PNC
+          SLACK_CHANNEL_TOKEN: U03S6A4DDCH
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           PR_LINK: ${{ github.event.pull_request._links.html.href }}
           PR_TITLE: ${{ github.event.pull_request.title }} 
