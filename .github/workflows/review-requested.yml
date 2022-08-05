@@ -2,7 +2,7 @@ name: Review Requested Slack Notification
 
 on:
   pull_request:
-    types: [ review_requested ]
+    types: [ review_requested, assigned ]
     branches: [ main ]
 
 jobs:
