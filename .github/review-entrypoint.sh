@@ -13,7 +13,7 @@ REVIEW_DATA=$(cat <<-END
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "*$PR_AUTHOR* has requested your review on <$PR_LINK|*$PR_TITLE*> :eyes:"
+          "text": ":eyes: *$PR_AUTHOR* has requested your review on <$PR_LINK|*$PR_TITLE*>"
         }  
       }] 
     }
