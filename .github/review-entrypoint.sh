@@ -24,4 +24,5 @@ curl -X POST \
      -H "Content-type: application/json; charset=utf-8" \
      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
      -d "$REVIEW_DATA" \
+     -d "as_user=true" \
      https://slack.com/api/chat.postMessage
