@@ -25,4 +25,3 @@ curl -X POST \
      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
      -d "$REVIEW_DATA" \
      https://slack.com/api/conversations.open\
-     https://slack.com/api/chat.postMessage
