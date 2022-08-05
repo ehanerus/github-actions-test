@@ -8,7 +8,7 @@ fi
 
 REVIEW_DATA=$(cat <<-END
     {
-      "users": "[ $SLACK_CHANNEL_TOKEN ]",
+      "channel": "$SLACK_CHANNEL_TOKEN",
       "blocks": [{
         "type": "section",
         "text": {
