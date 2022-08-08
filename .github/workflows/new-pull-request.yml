@@ -6,10 +6,16 @@ on:
     branches: [ main ]
 
 jobs:
+  printJob:    
+      name: Print info
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print GitHub event action
+          run: |
+            echo "${{ github.event.action }}"
+            
   notifyNewPR:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
