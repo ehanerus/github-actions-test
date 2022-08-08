@@ -13,7 +13,7 @@ DATA=$(cat <<-END
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": ":rocket: *NEW PULL REQUEST*\n published by *$PR_AUTHOR*\n\n <$PR_LINK|*$PR_TITLE*>\n status: *$PR_STATE*"
+          "text": ":android: *NEW ANDROID PULL REQUEST*\n published by *$PR_AUTHOR*\n\n <$PR_LINK|*$PR_TITLE*>\n status: *$PR_STATE*"
         }
       },
         {
