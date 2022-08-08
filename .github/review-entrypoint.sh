@@ -13,7 +13,7 @@ REVIEW_DATA=$(cat <<-END
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "Your review has been requested by *$PR_AUTHOR* for <$PR_LINK|*$PR_TITLE*>"
+          "text": ":eyes: *$PR_AUTHOR* has requested your review on <$PR_LINK|*$PR_TITLE*>"
         }  
       }] 
     }
@@ -24,5 +24,5 @@ curl -X POST \
      -H "Content-type: application/json; charset=utf-8" \
      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
      -d "$REVIEW_DATA" \
-     -d "as_user=true" \
+     https://slack.com/api/conversations.open\
      https://slack.com/api/chat.postMessage

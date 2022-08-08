@@ -2,7 +2,7 @@ name: Review Requested Slack Notification
 
 on:
   pull_request:
-    types: [ assigned ]
+    types: [ assigned, unassigned ]
     branches: [ main ]
 
 jobs:
@@ -21,4 +21,5 @@ jobs:
           SLACK_CHANNEL_TOKEN: U03S6A4DDCH
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           PR_LINK: ${{ github.event.pull_request._links.html.href }}
-          PR_TITLE: ${{ github.event.pull_request.title }} 
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          #PR_REVIEW_REQ_TARGET: ${{  }}
