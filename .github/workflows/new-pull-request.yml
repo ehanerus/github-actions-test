@@ -12,8 +12,8 @@ jobs:
       steps:
         - name: Print GitHub event action
           run: |
-            echo "${{ github.event.action }}"
-            
+            echo "${{ github.event.pull_request.state }}"
+
   notifyNewPR:
     runs-on: ubuntu-latest
     steps:
