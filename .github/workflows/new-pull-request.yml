@@ -13,9 +13,10 @@ jobs:
       name: Print info
       runs-on: ubuntu-latest
       steps:
-        - name: Print GitHub event action
-          run: |
-            echo "${{ github }}"
+        - name: Dump GitHub context
+          env:
+            GITHUB_CONTEXT: ${{ toJson(github) }}
+          run: echo "$GITHUB_CONTEXT"
 
   notifyNewPR:
     name: Slack Notification
