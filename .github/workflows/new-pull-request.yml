@@ -4,6 +4,9 @@ on:
   pull_request:
     #types: [ opened, ready_for_review ]
     branches: [ main ]
+    types:
+      - opened
+      - ready_for_review
 
 jobs:
   printJob:    
@@ -12,12 +15,18 @@ jobs:
       steps:
         - name: Print GitHub event action
           run: |
-            echo "${{ github.event.action }}"
+            echo "${{ github.event.pull_request.draft }}"
 
   notifyNewPR:
+    name: Slack Notification
+    if: ${{ github.event.pull_request.draft != 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Check state
+        run: |
+          echo "${{ github.event.pull_request.ready_for_review }}"
 
       - name: Notify slack
         shell: bash
@@ -25,7 +34,6 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL_TOKEN: ${{ secrets.SLACK_CHANNEL_TOKEN }}
-          #SLACK_USER_TOKEN: ${{ github.event.pull_request.user.login }}
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           PR_LINK: ${{ github.event.pull_request._links.html.href }}
           PR_TITLE: ${{ github.event.pull_request.title }}
