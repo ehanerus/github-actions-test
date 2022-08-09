@@ -18,12 +18,12 @@ jobs:
       steps:
         - name: Dump GitHub context
           env:
-            GITHUB_CONTEXT: ${{ toJson(github.event) }}
+            GITHUB_CONTEXT: ${{ toJson(github.event.syncronize) }}
           run: echo "$GITHUB_CONTEXT"
 
   notifyNewPR:
     name: Slack Notification
-    if: ${{ github.event.pull_request.draft != 'true' }}
+    if: ${{ github.event.pull_request.draft != 'true' && github.event != 'syncronize' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
