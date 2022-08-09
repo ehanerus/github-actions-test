@@ -10,6 +10,7 @@ on:
       - edited
       - synchronize
       - labeled
+      - ready_for_review
 
 jobs:
   printJob:    
@@ -18,12 +19,12 @@ jobs:
       steps:
         - name: Dump GitHub context
           env:
-            GITHUB_CONTEXT: ${{ toJson(github.event.syncronize) }}
+            GITHUB_CONTEXT: ${{ toJson(github.event.pull_request) }}
           run: echo "$GITHUB_CONTEXT"
 
   notifyNewPR:
     name: Slack Notification
-    if: ${{ github.event.pull_request.draft != 'true' && github.event != 'syncronize' }}
+    if: ${{ github.event.pull_request.draft != true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
