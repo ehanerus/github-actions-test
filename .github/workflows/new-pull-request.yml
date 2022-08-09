@@ -15,7 +15,7 @@ jobs:
       steps:
         - name: Print GitHub event action
           run: |
-            echo "${{ github.event.pull_request.draft }}"
+            echo "${{ github }}"
 
   notifyNewPR:
     name: Slack Notification
@@ -23,10 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Check state
-        run: |
-          echo "${{ github.event.pull_request.ready_for_review }}"
 
       - name: Notify slack
         shell: bash
