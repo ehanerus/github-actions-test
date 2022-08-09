@@ -6,7 +6,10 @@ on:
     branches: [ main ]
     types:
       - opened
-      - ready_for_review
+      - reopened
+      - edited
+      - synchronize
+      - labeled
 
 jobs:
   printJob:    
@@ -15,7 +18,7 @@ jobs:
       steps:
         - name: Dump GitHub context
           env:
-            GITHUB_CONTEXT: ${{ toJson(github.event) }}
+            GITHUB_CONTEXT: ${{ toJson(github.event.action) }}
           run: echo "$GITHUB_CONTEXT"
 
   notifyNewPR:
