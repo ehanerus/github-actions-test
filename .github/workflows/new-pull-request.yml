@@ -2,7 +2,6 @@ name: New PR Slack Notification
 
 on:
   pull_request:
-    #types: [ opened, ready_for_review ]
     branches: [ main ]
     types:
       - opened
@@ -24,7 +23,7 @@ jobs:
 
   notifyNewPR:
     name: Slack Notification
-    if: ${{ github.event.pull_request.draft != true }}
+    if: ${{ github.event.pull_request.draft != true && (github.event.action == 'opened' || github.event.action == 'reopened') || github.event.action == 'ready_for_review'}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
